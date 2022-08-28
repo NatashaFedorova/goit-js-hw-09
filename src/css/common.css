@@ -18,9 +18,28 @@ img {
 }
 
 .btn {
+  opacity: 1;
+}
+
+.btn[autocomplete='disabled'] {
   opacity: 0.5;
 }
 
-.btn.is-active {
-  opacity: 1;
+.timer {
+  display: flex;
+}
+.field:not(:last-child) {
+  margin-right: 15px;
+}
+.field > span {
+  display: block;
+}
+.value {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 500;
+}
+.label {
+  text-align: center;
+  font-size: 20px;
 }
