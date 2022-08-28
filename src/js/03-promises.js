@@ -24,29 +24,29 @@ function onSubmitForm(e) {
   e.preventDefault();
   for (position = 1; position <= form.amount; position += 1) {
     createPromise(position, form.delay);
-    console.log(position);
+    form.delay += form.step;
   }
   console.log(form);
 }
+
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(
-          Notiflix.Notify.success(
-            ` Fulfilled promise ${position} in ${delay}ms`
-          )
-        );
+        resolve({ position, delay });
       } else {
-        reject(
-          Notiflix.Notify.failure(` Rejected promise ${position} in ${delay}ms`)
-        );
+        reject({ position, delay });
       }
     }, delay);
-  });
+  })
+    .then(({ position, delay }) => {
+      Notiflix.Notify.success(` Fulfilled promise ${position} in ${delay}ms`);
+    })
+    .catch(({ position, delay }) => {
+      Notiflix.Notify.failure(` Rejected promise ${position} in ${delay}ms`);
+    });
 }
-
 // приклад=====================================
 // let result = 20000;
 // function showNumber(num) {
