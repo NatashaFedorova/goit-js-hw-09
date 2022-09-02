@@ -26,7 +26,6 @@ function onSubmitForm(e) {
     createPromise(position, form.delay);
     form.delay += form.step;
   }
-  console.log(form);
 }
 
 function createPromise(position, delay) {
@@ -47,6 +46,7 @@ function createPromise(position, delay) {
       Notiflix.Notify.failure(` Rejected promise ${position} in ${delay}ms`);
     });
 }
+
 // приклад=====================================
 // let result = 20000;
 // function showNumber(num) {

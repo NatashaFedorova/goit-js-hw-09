@@ -93,7 +93,7 @@ function addLeadingZero(value) {
 function showTime() {
   diff = selecteDateMs - Date.now();
   convertMs(diff);
-  if (diff === 0 || diff < 0 || diff < 1000) {
+  if (diff < 1000) {
     clearInterval(intervId);
   }
 }
